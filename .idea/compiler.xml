@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="parcial-II" />
         <module name="parcial-master-II" />
+        <module name="final-parcial-II" />
         <module name="Template" />
       </profile>
     </annotationProcessing>

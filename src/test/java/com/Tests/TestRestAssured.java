@@ -7,12 +7,13 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 
+// OBS: Algumas APIs ficam saindo do ar.
 public class TestRestAssured {
 
     @Test
     public void api_test_01(){
 
-        Response response = RestAssured.get("https://api.covid19tracker.ca/cases");
+        Response response = RestAssured.get("http://calapi.inadiutorium.cz/api/v0/en/calendars/general-en/today");
 
         System.out.println(response.getStatusCode());
         System.out.println(response.getBody().asString());
@@ -21,12 +22,13 @@ public class TestRestAssured {
 
         ValidatableResponse validate = response.then();
         validate.statusCode(200);
+//        validate.statusCode(500);
         validate.contentType(ContentType.JSON);
     }
 
     @Test
     public void api_test_02(){
-        Response response = RestAssured.get("https://api.covid19tracker.ca/cases?province=&per_page=&order");
+        Response response = RestAssured.get("https://vpic.nhtsa.dot.gov/api/vehicles/getallmanufacturers?format=json");
 
         System.out.println(response.getStatusCode());
         System.out.println(response.getBody().asString());
@@ -35,6 +37,7 @@ public class TestRestAssured {
 
         ValidatableResponse validate = response.then();
         validate.statusCode(200);
+//        validate.statusCode(500);
         validate.time(Matchers.lessThanOrEqualTo(1500L));
         validate.contentType(ContentType.JSON);
     }
@@ -42,7 +45,7 @@ public class TestRestAssured {
     @Test
     public void api_test_03() {
 
-        Response response = RestAssured.get("https://api.covid19tracker.ca/fatalities?province=&per_page=&order");
+        Response response = RestAssured.get("https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json");
 
         System.out.println(response.getStatusCode());
         System.out.println(response.getBody().asString());
@@ -51,6 +54,7 @@ public class TestRestAssured {
 
         ValidatableResponse validate = response.then();
         validate.statusCode(200);
+//        validate.statusCode(500);
         validate.time(Matchers.lessThanOrEqualTo(1500L));
         validate.contentType(ContentType.JSON);
     }
@@ -68,6 +72,7 @@ public class TestRestAssured {
 
         ValidatableResponse validate = response.then();
         validate.statusCode(200);
+//        validate.statusCode(500);
         validate.time(Matchers.lessThanOrEqualTo(1000L));
         validate.contentType(ContentType.JSON);
         validate.body(Matchers.containsString("displayName"));
